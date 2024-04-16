@@ -10,20 +10,21 @@ const fetchGuests = async () => {
   const isNotComing = data.filter((guest) => guest.isComing == false);
 
   for (let i = 0; i < isComing.length; i++) {
-    const p = document.createElement("p");
-    p.innerText =
-      "Namn: " + isComing[i].name + " Meddelande: " + isComing[i].content + "Datum:" + isComing[i].created_date ;
-    partyGuests.appendChild(p);
+    const li = document.createElement("li");
+    li.classList.add("listItem")
+    li.innerText =
+      "Namn: " + isComing[i].name + " Meddelande: " + isComing[i].content + "\n" + "Datum:" + isComing[i].created_date.slice(0, 10);
+    partyGuests.appendChild(li);
 
     console.log(data[i].isComing);
     console.log(data[i].isNotComing);
   }
 
   for (let i = 0; i < isNotComing.length; i++) {
-    const p = document.createElement("p");
-    p.innerText =
-      "Namn: " + isComing[i].name + " Meddelande: " + isComing[i].content;
-    notComing.appendChild(p);
+    const li = document.createElement("li");
+    li.innerText =
+      "Namn: " + isNotComing[i].name + " Meddelande: " + isNotComing[i].content + "\n" + "Datum:" + isComing[i].created_date.slice(0, 10);
+    notComing.appendChild(li);
   }
 };
 
